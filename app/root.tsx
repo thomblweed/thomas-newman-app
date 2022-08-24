@@ -41,7 +41,7 @@ const Document = ({ children }: { children: ReactNode }) => (
   </html>
 );
 
-export default function App() {
+export default function Root() {
   return (
     <Document>
       <Main>
