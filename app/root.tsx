@@ -11,7 +11,7 @@ import {
   Scripts,
   ScrollRestoration
 } from '@remix-run/react';
-import React from 'react';
+import type { ReactNode } from 'react';
 
 import { Main } from './layouts/Main';
 import styles from './styles/global.css';
@@ -26,7 +26,7 @@ export const meta: MetaFunction = () => ({
   viewport: 'width=device-width,initial-scale=1'
 });
 
-const Document = ({ children }: { children: React.ReactNode }) => (
+const Document = ({ children }: { children: ReactNode }) => (
   <html lang='en'>
     <head>
       <Meta />

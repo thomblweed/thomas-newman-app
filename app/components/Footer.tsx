@@ -1,6 +1,6 @@
-interface FooterProps {
+type FooterProps = {
   footerText: string;
-}
+};
 
 export const Footer = ({ footerText }: FooterProps) => (
   <footer className='bg-gradient-to-t from-dark-grey py-4'>
