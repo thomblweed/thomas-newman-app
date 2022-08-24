@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+
+@layer base {
+  html {
+    @apply text-grey font-roboto;
+  }
+  button {
+    @apply text-black;
+  }
+  h1 {
+    @apply text-3xl text-primary;
+  }
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('/fonts/roboto-mono-v13-latin-regular.woff') format('woff');
+  font-display: swap;
+}
+
+@tailwind utilities;
