@@ -2,8 +2,9 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev"
+    "build": "pnpm clean:build && remix build",
+    "dev": "remix dev --port 2000",
+    "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi"
   },
   "dependencies": {
     "@remix-run/node": "^1.6.8",
