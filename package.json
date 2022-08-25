@@ -8,13 +8,17 @@
     "dev": "run-p \"dev:*\"",
     "dev:css": "postcss styles --base styles --dir app/styles -w",
     "dev:remix": "remix dev --port 2000",
-    "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi"
+    "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi",
+    "deps:up": "docker compose up -d",
+    "deps:down": "docker compose down --rmi local",
+    "deps:restart": "pnpm deps:down && pnpm deps:up"
   },
   "dependencies": {
     "@remix-run/node": "^1.6.8",
     "@remix-run/react": "^1.6.8",
     "@remix-run/vercel": "^1.6.8",
     "@vercel/node": "^2.4.4",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -1,7 +1,9 @@
 import { Form as RemixForm } from '@remix-run/react';
 import type { FormMethod } from '@remix-run/react';
+
 import type { FormField, FormSchema } from './types';
 import { Field } from './Fields/Field';
+import { Button } from '../Elements/Button';
 
 type FormProps = {
   schema: FormSchema;
@@ -31,15 +33,9 @@ export const Form = ({
         />
       ))}
       {schema.buttons?.map((button) => (
-        <button
-          key={button.id}
-          //   label={button.label}
-          //   loading={busy}
-          disabled={busy}
-          type={button.type}
-        >
+        <Button key={button.id} disabled={busy} type={button.type}>
           {button.label}
-        </button>
+        </Button>
       ))}
       {errors?.map((error: string) => (
         <p className='text-red-600' key={error}>

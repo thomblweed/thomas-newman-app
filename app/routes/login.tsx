@@ -1,11 +1,27 @@
+import { ActionFunction } from '@remix-run/node';
 import { useTransition } from '@remix-run/react';
+
 import { Form } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
+import { signinUser } from '~/service/user.service';
+import { Credentials } from '~/types';
+import { getFormValuesFromRequest } from '~/utils';
 
-const enum LoginFields {
-  USERNAME = 'username',
-  PASSWORD = 'password'
-}
+const EMAIL = 'email';
+const PASSWORD = 'password';
+
+export const action: ActionFunction = async ({
+  request
+}): Promise<Response> => {
+  const [email, password] = await getFormValuesFromRequest(request, [
+    EMAIL,
+    PASSWORD
+  ]);
+  const response = await signinUser({ email, password } as Credentials);
+  console.log({ response });
+
+  return new Response();
+};
 
 export default function Login() {
   const { state } = useTransition();
@@ -17,13 +33,13 @@ export default function Login() {
           fields: [
             {
               type: FieldType.EMAIL,
-              name: LoginFields.USERNAME,
-              label: 'Username',
+              name: EMAIL,
+              label: 'Email Address',
               required: true
             },
             {
               type: FieldType.PASSWORD,
-              name: LoginFields.PASSWORD,
+              name: PASSWORD,
               label: 'Password',
               required: true
             }
