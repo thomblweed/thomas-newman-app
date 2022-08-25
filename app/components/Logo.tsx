@@ -1,7 +1,3 @@
-type LogoProps = {
-  logoText: string;
-};
-
-export const Logo = ({ logoText }: LogoProps) => (
-  <div className='text-primary text-4xl whitespace-nowrap'>{logoText}</div>
+export const Logo = () => (
+  <div className='text-primary text-4xl whitespace-nowrap'>thomblweed</div>
 );
