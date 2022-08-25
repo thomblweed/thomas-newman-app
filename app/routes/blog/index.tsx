@@ -1,3 +1,9 @@
+import { HeadingLayout } from '~/layouts/HeaderLayout';
+
 export default function Blog() {
-  return <h2>Blog</h2>;
+  return (
+    <HeadingLayout>
+      <h2>Blog</h2>
+    </HeadingLayout>
+  );
 }

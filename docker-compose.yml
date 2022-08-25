@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  thom-auth:
+    image: thomasnewman/thom-auth:0.0.4
+    env_file:
+      - .env
+    ports:
+      - 3001:3001
+    environment:
+      - CORS_ORIGIN=http://localhost:2000
+      - MONGO_HOST=mongo-auth
+      - SEED=true
+    restart: on-failure
+  mongo-auth:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}

@@ -1,3 +1,9 @@
+import { HeadingLayout } from '~/layouts/HeaderLayout';
+
 export default function Index() {
-  return <h2>Home</h2>;
+  return (
+    <HeadingLayout>
+      <h2>Home</h2>
+    </HeadingLayout>
+  );
 }
