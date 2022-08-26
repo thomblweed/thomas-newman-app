@@ -1,4 +1,4 @@
-import { ActionFunction } from '@remix-run/node';
+import { ActionFunction, ErrorBoundaryComponent } from '@remix-run/node';
 import { useTransition } from '@remix-run/react';
 
 import { Form } from '~/components/Form';
@@ -26,7 +26,8 @@ export const action: ActionFunction = async ({
 export default function Login() {
   const { state } = useTransition();
   return (
-    <div className='flex h-full'>
+    <div className='flex flex-col h-full'>
+      <h2>Admin Login</h2>
       <Form
         method='post'
         schema={{
@@ -57,3 +58,13 @@ export default function Login() {
     </div>
   );
 }
+
+export const ErrorBoundary: ErrorBoundaryComponent = () => {
+  return (
+    <div className='flex h-full'>
+      <div className='m-auto text-red-600'>
+        Bad things have happened when trying to login
+      </div>
+    </div>
+  );
+};

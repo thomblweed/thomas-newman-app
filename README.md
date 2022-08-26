@@ -5,6 +5,7 @@
 ```
 https://pnpm.io/installation
 https://taskfile.dev/installation/
+pnpm add -g netlify-cli
 ```
 
 ## Development
