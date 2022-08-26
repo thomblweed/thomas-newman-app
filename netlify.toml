@@ -1,5 +1,5 @@
 [build]
-  command = “CI= pnpm build”
+  command = "CI= pnpm build"
   publish = "public"
 
 [dev]
