@@ -12,12 +12,17 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
+import { HeadingLayout } from './layouts/HeaderLayout';
 
 import { Main } from './layouts/Main';
+import fontStyles from './styles/font.css';
 import styles from './styles/global.css';
 
 export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    { rel: 'stylesheet', href: styles },
+    { rel: 'stylesheet', href: fontStyles }
+  ];
 };
 
 export const meta: MetaFunction = () => ({
@@ -45,7 +50,9 @@ export default function Root() {
   return (
     <Document>
       <Main>
-        <Outlet />
+        <HeadingLayout>
+          <Outlet />
+        </HeadingLayout>
       </Main>
     </Document>
   );
