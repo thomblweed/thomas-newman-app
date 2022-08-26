@@ -1,5 +1,8 @@
+[build.environment]
+  NPM_FLAGS = "--version"
+
 [build]
-  command = "npm run build:css && npm run build:remix"
+  command = "npx pnpm i --shamefully-hoist --store=node_modules/.pnpm-store && npx pnpm build:css && npx pnpm build:remix"
   publish = "public"
 
 [dev]
