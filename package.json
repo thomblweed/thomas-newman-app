@@ -6,6 +6,7 @@
     "build:remix": "remix build",
     "build:css": "postcss styles --base styles --dir app/styles --env production",
     "dev": "run-p \"dev:*\"",
+    "start": "cross-env NODE_ENV=production netlify dev",
     "dev:css": "postcss styles --base styles --dir app/styles -w",
     "dev:remix": "remix dev --port 2000",
     "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi",
@@ -19,6 +20,7 @@
     "@remix-run/node": "^1.7.0",
     "@remix-run/react": "^1.7.0",
     "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
