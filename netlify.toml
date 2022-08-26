@@ -1,5 +1,8 @@
+[build.environment]
+  NPM_FLAGS = "--version"
+
 [build]
-  command = "CI= pnpm build"
+  command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
   publish = "public"
 
 [dev]
