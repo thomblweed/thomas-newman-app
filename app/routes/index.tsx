@@ -3,7 +3,7 @@ import { HeadingLayout } from '~/layouts/HeaderLayout';
 export default function Index() {
   return (
     <HeadingLayout>
-      <h2>Home</h2>
+      <p>Hello! I'm a web developer and welcome to my site :-)</p>
     </HeadingLayout>
   );
 }
