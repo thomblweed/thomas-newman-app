@@ -26,7 +26,8 @@ export const action: ActionFunction = async ({
 export default function Login() {
   const { state } = useTransition();
   return (
-    <div className='flex h-full'>
+    <div className='flex flex-col h-full'>
+      <h2>Admin Login</h2>
       <Form
         method='post'
         schema={{

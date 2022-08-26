@@ -33,7 +33,7 @@ export const Form = ({
         />
       ))}
       {schema.buttons?.map((button) => (
-        <Button key={button.id} disabled={busy} type={button.type}>
+        <Button key={button.id} disabled={busy} type={button.type} width='full'>
           {button.label}
         </Button>
       ))}

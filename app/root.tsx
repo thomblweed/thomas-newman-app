@@ -61,16 +61,8 @@ export default function Root() {
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   console.error(error);
   return (
-    <html>
-      <head>
-        <title>Error</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div>Bad things have happened</div>
-        <Scripts />
-      </body>
-    </html>
+    <Document>
+      <div>Bad things have happened</div>
+    </Document>
   );
 };
