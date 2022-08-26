@@ -4,8 +4,7 @@ node_modules
 api
 .cache
 .env
-.vercel
-.output
+.netlify
 
 /build/
 /public/build

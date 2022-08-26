@@ -5,7 +5,7 @@ import { Navigation } from '~/components/Navigation';
 
 const DesktopHeader = () => {
   return (
-    <header className='flex items-center columns-3 mt-2'>
+    <header className='flex items-center columns-3 mt-2 mb-5'>
       <div className='w-2/5 min-w-[260px]'>
         <Logo />
       </div>
