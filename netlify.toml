@@ -2,7 +2,7 @@
   NPM_FLAGS = "--version"
 
 [build]
-  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm build"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm build:css && npx pnpm build:remix"
   publish = "public"
 
 [dev]
