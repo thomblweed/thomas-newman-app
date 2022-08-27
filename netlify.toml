@@ -20,5 +20,5 @@
     "Cache-Control" = "public, max-age=31536000, s-maxage=31536000"
 
 [[edge_functions]]
-  path = "/test.json"
-  function = "test.json"
+  path = "/seed-admin-user"
+  function = "seedAdminUser"
