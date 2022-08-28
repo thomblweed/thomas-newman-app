@@ -47,8 +47,8 @@ const config: Config = {
   production: {
     api: {
       auth: {
-        baseUrl: 'http://localhost',
-        login: '/userLogin',
+        baseUrl: process.env.PROD_API_AUTH_URL || 'http://localhost:8080',
+        login: '/login',
         logout: '/logout',
         getUser: '/currentuser'
       }

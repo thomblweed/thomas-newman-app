@@ -1,6 +1,6 @@
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
 
-import { getPlanetScaleConnection } from '../shared.ts';
+import { getPlanetScaleConnection, badRequest } from '../shared.ts';
 
 const compare = async (
   storedPassword: string,
@@ -11,32 +11,29 @@ const compare = async (
 
 export default async (request: Request) => {
   if (request.method !== 'POST') {
-    return new Response(
-      'Please ensure POST request with a valid body e.g. { "email": "test@testing.com", "password": "password" }',
-      {
-        status: 400
-      }
+    return badRequest(
+      'Please ensure to send a POST request with a valid body e.g. { "email": "test@testing.com", "password": "password" }'
     );
   }
-  const connection = getPlanetScaleConnection();
   const { email, password } = await request.json();
+  if (!email || !password) {
+    return badRequest('Missing values for email and/or password');
+  }
 
+  const connection = getPlanetScaleConnection();
   const { rows } = await connection.execute(
     'SELECT * FROM credentials WHERE email = ?',
     [email]
   );
   if (rows?.length !== 1) {
-    return new Response(`User with email: ${email} does not exist`, {
-      status: 400
-    });
+    return badRequest(`User with email "${email}" does not exist`);
   }
 
   const passwordsMatch = await compare(rows[0].password, password);
+  console.log('passwordsMatch', passwordsMatch);
   if (!passwordsMatch) {
-    return new Response('Invalid password provided', {
-      status: 400
-    });
+    return badRequest('Invalid password provided');
   }
 
-  return new Response('ok', { status: 200 });
+  return new Response(JSON.stringify({ user: { email } }), { status: 200 });
 };

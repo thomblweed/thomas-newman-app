@@ -1,8 +1,14 @@
-import { ActionFunction, ErrorBoundaryComponent } from '@remix-run/node';
-import { useTransition } from '@remix-run/react';
+import {
+  ActionFunction,
+  ErrorBoundaryComponent,
+  json,
+  redirect
+} from '@remix-run/node';
+import { useActionData, useTransition } from '@remix-run/react';
 
 import { Form } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
+import { commitSession, getSession } from '~/service/session.service';
 import { signinUser } from '~/service/user.service';
 import { Credentials } from '~/types';
 import { getFormValuesFromRequest } from '~/utils';
@@ -10,21 +16,42 @@ import { getFormValuesFromRequest } from '~/utils';
 const EMAIL = 'email';
 const PASSWORD = 'password';
 
-export const action: ActionFunction = async ({
-  request
-}): Promise<Response> => {
+export const action: ActionFunction = async ({ request }) => {
   const [email, password] = await getFormValuesFromRequest(request, [
     EMAIL,
     PASSWORD
   ]);
-  const response = await signinUser({ email, password } as Credentials);
-  console.log({ response });
-
-  return new Response();
+  console.log(process.env.NODE_ENV);
+  const session = await getSession(request.headers.get('Cookie'));
+  try {
+    const user = await signinUser({ email, password } as Credentials);
+    session.set('user', user);
+    return redirect('/', {
+      headers: {
+        'set-cookie': await commitSession(session)
+      }
+    });
+  } catch (error: any) {
+    const { status } = error?.response;
+    const errorMessage =
+      status === 400 && error.response?.data
+        ? error.response.data
+        : 'An error occured when logging in';
+    session.flash('error', errorMessage);
+    return json(
+      { loginError: errorMessage },
+      {
+        headers: {
+          'set-cookie': await commitSession(session)
+        }
+      }
+    );
+  }
 };
 
 export default function Login() {
   const { state } = useTransition();
+  const actionData = useActionData<{ loginError?: string }>();
   return (
     <div className='flex flex-col h-full'>
       <h2>Admin Login</h2>
@@ -54,17 +81,14 @@ export default function Login() {
           ]
         }}
         busy={state === 'submitting' || state === 'loading'}
+        error={actionData?.loginError}
       />
     </div>
   );
 }
 
-export const ErrorBoundary: ErrorBoundaryComponent = () => {
-  return (
-    <div className='flex h-full'>
-      <div className='m-auto text-red-600'>
-        Bad things have happened when trying to login
-      </div>
-    </div>
-  );
-};
+export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
+  <div className='flex h-full'>
+    <div className='m-auto text-red-600'>{error.message}</div>
+  </div>
+);

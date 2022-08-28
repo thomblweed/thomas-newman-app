@@ -48,4 +48,5 @@ To get the environment variables working with the Netlify Edge Functions, ensure
 netlify env:set PLANETSCALE_HOST "<host value>"
 netlify env:set PLANETSCALE_USERNAME "<username value>"
 netlify env:set PLANETSCALE_PASSWORD "<password value>"
+netlify env:set SESSION_SECRET "<session value>"
 ```
