@@ -1,6 +1,7 @@
 import { Context } from 'https://edge.netlify.com';
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
-import { connect } from 'https://unpkg.com/@planetscale/database@^1.3.0';
+
+import { getPlanetScaleConnection } from '../shared.ts';
 
 type Credentials = {
   email: string;
@@ -14,20 +15,20 @@ const toHash = async (password: string): Promise<string> => {
   return hashedPassword;
 };
 
+// function disabled for now
 export default async (request: Request, _context: Context) => {
   if (request.method !== 'POST') {
-    return new Response('Please ensure POST request', {
-      status: 400
-    });
+    return new Response(
+      'Please ensure POST request with a valid body e.g. { "email": "test@testing.com", "password": "password" }',
+      {
+        status: 400
+      }
+    );
   }
-  const conn = connect({
-    host: Deno.env.get('PLANETSCALE_HOST'),
-    username: Deno.env.get('PLANETSCALE_USERNAME'),
-    password: Deno.env.get('PLANETSCALE_PASSWORD')
-  });
+  const connection = getPlanetScaleConnection();
   const { email, password } = await request.json();
 
-  const { rows } = await conn.execute('SELECT * FROM credentials', []);
+  const { rows } = await connection.execute('SELECT * FROM credentials', []);
   const userExists = rows?.find((row: Credentials) => row.email === email);
   if (userExists) {
     return new Response(`User with email: ${email} already exists`, {
@@ -36,7 +37,7 @@ export default async (request: Request, _context: Context) => {
   }
 
   const hashedPassword = await toHash(password);
-  await conn.execute(
+  await connection.execute(
     'INSERT INTO credentials (email, password) VALUES (?, ?);',
     [email, hashedPassword]
   );

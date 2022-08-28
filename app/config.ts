@@ -17,8 +17,8 @@ const config: Config = {
   development: {
     api: {
       auth: {
-        baseUrl: 'http://localhost:3001/api/users',
-        login: '/signin',
+        baseUrl: 'http://localhost:2000/api/users',
+        login: '/login',
         logout: '/signout',
         getUser: '/currentuser'
       }
@@ -48,7 +48,7 @@ const config: Config = {
     api: {
       auth: {
         baseUrl: 'http://localhost',
-        login: '/login',
+        login: '/userLogin',
         logout: '/logout',
         getUser: '/currentuser'
       }
