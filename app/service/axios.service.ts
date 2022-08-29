@@ -12,8 +12,9 @@ const defaultConfig: AxiosRequestConfig = {
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
-  },
-  withCredentials: env === 'development' ? true : false
+  }
+  // TODO: double check this
+  // withCredentials: env === 'development' ? true : false
 };
 
 export const createAxiosInstance = (

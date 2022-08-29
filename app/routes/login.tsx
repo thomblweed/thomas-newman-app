@@ -21,7 +21,6 @@ export const action: ActionFunction = async ({ request }) => {
     EMAIL,
     PASSWORD
   ]);
-  console.log(process.env.NODE_ENV);
   const session = await getSession(request.headers.get('Cookie'));
   try {
     const user = await signinUser({ email, password } as Credentials);

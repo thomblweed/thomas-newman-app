@@ -30,7 +30,6 @@ export default async (request: Request) => {
   }
 
   const passwordsMatch = await compare(rows[0].password, password);
-  console.log('passwordsMatch', passwordsMatch);
   if (!passwordsMatch) {
     return badRequest('Invalid password provided');
   }
