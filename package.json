@@ -6,13 +6,10 @@
     "build:remix": "remix build",
     "build:css": "postcss styles --base styles --dir app/styles --env production",
     "dev": "run-p \"dev:*\"",
-    "start": "cross-env NODE_ENV=production netlify dev",
     "dev:css": "postcss styles --base styles --dir app/styles -w",
     "dev:remix": "remix dev --port 2000",
-    "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi",
-    "deps:up": "docker compose up -d",
-    "deps:down": "docker compose down --rmi local",
-    "deps:restart": "pnpm deps:down && pnpm deps:up"
+    "start": "cross-env NODE_ENV=production netlify dev",
+    "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi"
   },
   "dependencies": {
     "@netlify/functions": "^1.2.0",

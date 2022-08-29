@@ -10,7 +10,7 @@ type FormProps = {
   method: FormMethod;
   busy: boolean;
   action?: string;
-  errors?: string[];
+  error?: string;
 };
 
 export const Form = ({
@@ -18,7 +18,7 @@ export const Form = ({
   busy = false,
   method,
   action,
-  errors
+  error
 }: FormProps): JSX.Element => {
   return (
     <RemixForm method={method} action={action} className='m-auto'>
@@ -37,11 +37,7 @@ export const Form = ({
           {button.label}
         </Button>
       ))}
-      {errors?.map((error: string) => (
-        <p className='text-red-600' key={error}>
-          {error}
-        </p>
-      ))}
+      {error ? <p className='text-red-600'>{error}</p> : null}
     </RemixForm>
   );
 };

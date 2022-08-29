@@ -17,8 +17,8 @@ const config: Config = {
   development: {
     api: {
       auth: {
-        baseUrl: 'http://localhost:3001/api/users',
-        login: '/signin',
+        baseUrl: 'http://localhost:2000/api/users',
+        login: '/login',
         logout: '/signout',
         getUser: '/currentuser'
       }
@@ -47,7 +47,7 @@ const config: Config = {
   production: {
     api: {
       auth: {
-        baseUrl: 'http://localhost',
+        baseUrl: process.env.PROD_API_AUTH_URL || 'http://localhost:8080',
         login: '/login',
         logout: '/logout',
         getUser: '/currentuser'

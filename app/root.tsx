@@ -1,6 +1,7 @@
 import type {
   ErrorBoundaryComponent,
   LinksFunction,
+  LoaderFunction,
   MetaFunction
 } from '@remix-run/node';
 import {
@@ -12,11 +13,11 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
-import { HeadingLayout } from './layouts/HeaderLayout';
 
-import { Main } from './layouts/Main';
-import fontStyles from './styles/font.css';
-import styles from './styles/global.css';
+import { HeadingLayout } from '~/layouts/HeaderLayout';
+import { Main } from '~/layouts/Main';
+import fontStyles from '~/styles/font.css';
+import styles from '~/styles/global.css';
 
 export const links: LinksFunction = () => {
   return [
@@ -58,11 +59,10 @@ export default function Root() {
   );
 }
 
-export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  console.error(error);
-  return (
-    <Document>
+export const ErrorBoundary: ErrorBoundaryComponent = () => (
+  <Document>
+    <Main>
       <div>Bad things have happened</div>
-    </Document>
-  );
-};
+    </Main>
+  </Document>
+);
