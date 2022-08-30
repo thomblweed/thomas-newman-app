@@ -9,6 +9,20 @@ const compare = async (
   return await bcrypt.compare(suppliedPassword, storedPassword);
 };
 
+const badRequest = (message: string) => ({
+  statusCode: 400,
+  body: message
+});
+
+const willParseJSON = (value: string): boolean => {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
+
 const planetscaleConfig = {
   host: process.env.PLANETSCALE_HOST,
   username: process.env.PLANETSCALE_USERNAME,
@@ -16,18 +30,18 @@ const planetscaleConfig = {
 };
 
 export const handler: Handler = async (event: HandlerEvent) => {
-  if (!event.body) {
-    return {
-      statusCode: 400,
-      body: 'missing body'
-    };
+  // TODO: invesigate if this is nessessary or middleware options
+  if (event.httpMethod !== 'POST') {
+    return badRequest('Please ensure http method is of type POST');
   }
-  const { email, password } = JSON.parse(event.body);
+  // TODO: move body validation to middleware
+  const { body } = event;
+  if (!body || !willParseJSON(body)) {
+    return badRequest('Request body must be a JSON object');
+  }
+  const { email, password } = JSON.parse(body);
   if (!email || !password) {
-    return {
-      statusCode: 400,
-      body: 'Missing values for email and/or password'
-    };
+    return badRequest('Missing values for email and/or password');
   }
 
   const connection = connect(planetscaleConfig);
@@ -36,22 +50,15 @@ export const handler: Handler = async (event: HandlerEvent) => {
     [email]
   );
   if (rows?.length !== 1) {
-    return {
-      statusCode: 400,
-      body: `User with email "${email}" does not exist`
-    };
+    return badRequest(`User with email "${email}" does not exist`);
   }
-
   const passwordsMatch = await compare(rows[0].password, password);
   if (!passwordsMatch) {
-    return {
-      statusCode: 400,
-      body: 'Invalid password provided'
-    };
+    return badRequest('Invalid password provided');
   }
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ thom: 'rules' })
+    body: 'Login successful'
   };
 };
