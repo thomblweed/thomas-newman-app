@@ -1,16 +1,12 @@
-import {
-  ActionFunction,
-  ErrorBoundaryComponent,
-  json,
-  redirect
-} from '@remix-run/node';
+import type { ActionFunction, ErrorBoundaryComponent } from '@remix-run/node';
+import { json, redirect } from '@remix-run/node';
 import { useActionData, useTransition } from '@remix-run/react';
 
 import { Form } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
 import { commitSession, getSession } from '~/service/session.service';
 import { signinUser } from '~/service/user.service';
-import { Credentials } from '~/types';
+import type { Credentials } from '~/types';
 import { getFormValuesFromRequest } from '~/utils';
 
 const EMAIL = 'email';

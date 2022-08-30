@@ -6,8 +6,13 @@
   publish = "public"
 
 [dev]
-  command = "remix watch"
+  command = "pnpm watch"
   port = 2000
+
+[[redirects]]
+  from = "/api/users/login"
+  to = "/.netlify/functions/login"
+  status = 200
 
 [[redirects]]
   from = "/*"
@@ -24,6 +29,7 @@
 #   path = "/api/users/seed-admin-user"
 #   function = "seedAdminUser"
 
-[[edge_functions]]
-  path = "/api/users/login"
-  function = "login"
+### disabling until edge functions support the deno unstable flag on production
+# [[edge_functions]]
+#   path = "/api/users/login"
+#   function = "login"
