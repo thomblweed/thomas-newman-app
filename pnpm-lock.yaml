@@ -26,6 +26,7 @@ specifiers:
   react-dom: ^18.2.0
   tailwindcss: ^3.1.8
   typescript: ^4.8.2
+  xstate: ^4.33.4
 
 dependencies:
   '@netlify/functions': 1.2.0
@@ -38,6 +39,7 @@ dependencies:
   cross-env: 7.0.3
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  xstate: 4.33.4
 
 devDependencies:
   '@remix-run/dev': 1.7.0_p6bz3zlyof7hasoqeidkhkiywu
@@ -8292,6 +8294,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /xstate/4.33.4:
+    resolution: {integrity: sha512-3giWybQ8XvAr+3tDENlGduR4XREmiUOVxKRjdqFEe6g8eD8UrYhTth3OyLHX/sR9r/9GY2t/LbjfkCC8XFfv4Q==}
+    dev: false
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
