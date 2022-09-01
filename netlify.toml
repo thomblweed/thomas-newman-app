@@ -9,6 +9,10 @@
   command = "pnpm watch"
   port = 2000
 
+[context.dev.environment]
+  NODE_ENV = "development"
+  REMIX_ENV = "development"
+
 [[redirects]]
   from = "/api/users/login"
   to = "/.netlify/functions/login"
