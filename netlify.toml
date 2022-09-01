@@ -27,6 +27,10 @@
 [functions]
   node_bundler = "esbuild"
 
+[[edge_functions]]
+  path = "/api/demo"
+  function = "demo"
+
 ### disabling seed function
 # [[edge_functions]]
 #   path = "/api/users/seed-admin-user"

@@ -9,6 +9,10 @@ type Config = {
         logout: string;
         getUser: string;
       };
+      demo?: {
+        baseUrl: string;
+        demo: string;
+      };
     };
   };
 };
@@ -21,6 +25,10 @@ const config: Config = {
         login: '/login',
         logout: '/signout',
         getUser: '/currentuser'
+      },
+      demo: {
+        baseUrl: 'http://localhost:2000/api',
+        demo: '/demo'
       }
     }
   },
@@ -51,6 +59,10 @@ const config: Config = {
         login: '/login',
         logout: '/logout',
         getUser: '/currentuser'
+      },
+      demo: {
+        baseUrl: process.env.PROD_API_DEMO_URL || 'http://localhost:8080',
+        demo: '/demo'
       }
     }
   }
