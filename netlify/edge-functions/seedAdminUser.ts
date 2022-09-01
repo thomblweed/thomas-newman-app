@@ -1,7 +1,14 @@
-import { Context } from 'https://edge.netlify.com';
+import type { Context } from 'https://edge.netlify.com';
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
 
-import { getPlanetScaleConnection } from '../shared.ts';
+import { connect } from 'https://unpkg.com/@planetscale/database@^1.3.0';
+
+const getPlanetScaleConnection = () =>
+  connect({
+    host: Deno.env.get('PLANETSCALE_HOST'),
+    username: Deno.env.get('PLANETSCALE_USERNAME'),
+    password: Deno.env.get('PLANETSCALE_PASSWORD')
+  });
 
 type Credentials = {
   email: string;

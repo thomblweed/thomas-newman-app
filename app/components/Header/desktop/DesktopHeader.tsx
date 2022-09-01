@@ -13,7 +13,8 @@ const DesktopHeader = () => {
         <Navigation
           items={[
             { value: 'Home', route: '/' },
-            { value: 'Blog', route: '/blog' }
+            { value: 'Blog', route: '/blog' },
+            { value: 'Demo', route: '/demo' }
           ]}
           content={({ value, route }) => (
             <NavLink

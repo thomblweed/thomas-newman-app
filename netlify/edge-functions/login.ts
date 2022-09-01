@@ -1,6 +1,17 @@
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
+import { connect } from 'https://unpkg.com/@planetscale/database@^1.3.0';
 
-import { getPlanetScaleConnection, badRequest } from '../shared.ts';
+const getPlanetScaleConnection = () =>
+  connect({
+    host: Deno.env.get('PLANETSCALE_HOST'),
+    username: Deno.env.get('PLANETSCALE_USERNAME'),
+    password: Deno.env.get('PLANETSCALE_PASSWORD')
+  });
+
+const badRequest = (message: string) =>
+  new Response(message, {
+    status: 400
+  });
 
 const compare = async (
   storedPassword: string,

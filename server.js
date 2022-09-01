@@ -1,26 +1,6 @@
 import { createRequestHandler } from '@remix-run/netlify';
 import * as build from '@remix-run/dev/server-build';
 
-const requiredEnvironmentVariables = [
-  'PLANETSCALE_HOST',
-  'PLANETSCALE_USERNAME',
-  'PLANETSCALE_PASSWORD',
-  'PROD_API_AUTH_URL',
-  'SESSION_SECRET'
-];
-
-const validateEnvironmentVariables = () => {
-  const missingEnvironmentVariables = requiredEnvironmentVariables.filter(
-    (variable) => !process.env[variable]
-  );
-  if (missingEnvironmentVariables.length > 0) {
-    throw new Error(
-      'Following required Environmetn Variables missing: ' +
-        missingEnvironmentVariables
-    );
-  }
-};
-
 /*
  * Returns a context object with at most 3 keys:
  *  - `netlifyGraphToken`: raw authentication token to use with Netlify Graph
@@ -30,7 +10,6 @@ const validateEnvironmentVariables = () => {
  *    present if a secret is set.
  */
 function getLoadContext(event, context) {
-  validateEnvironmentVariables();
   let rawAuthorizationString;
   let netlifyGraphToken;
 
