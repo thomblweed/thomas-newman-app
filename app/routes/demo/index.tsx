@@ -19,10 +19,7 @@ type Person = {
 };
 
 export const loader: LoaderFunction = async () => {
-  const response = await axiosService(axiosInstance, demoConfig!.demo, {
-    method: 'GET',
-    params: { city: 'New York' }
-  });
+  const response = await axiosService(axiosInstance, demoConfig!.demo);
 
   return response.data;
 };
@@ -32,14 +29,12 @@ export default () => {
   return (
     <div>
       {values?.map((value: Person) => (
-        <>
-          <div
-            key={value.PersonID}
-          >{`${value.FirstName} ${value.LastName}`}</div>
+        <div key={value.PersonID}>
+          <div>{`${value.FirstName} ${value.LastName}`}</div>
           <div>{value.Address}</div>
           <div>{value.City}</div>
           <br />
-        </>
+        </div>
       ))}
     </div>
   );

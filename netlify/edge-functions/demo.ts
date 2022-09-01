@@ -8,20 +8,17 @@ const getPlanetScaleConnection = () =>
     password: Deno.env.get('PLANETSCALE_PASSWORD')
   });
 
-const badRequest = (message: string) =>
-  new Response(message, {
-    status: 400
-  });
-
 export default async (request: Request, _context: Context) => {
   const url = request.url;
   const search = new URL(url).search;
   const params = new URLSearchParams(search);
+  const connection = getPlanetScaleConnection();
   if (!params.has('city')) {
-    return badRequest('Missing search value for city');
+    const { rows } = await connection.execute(`SELECT * FROM Persons`, []);
+
+    return new Response(JSON.stringify(rows), { status: 200 });
   }
   const city = params.get('city');
-  const connection = getPlanetScaleConnection();
   const { rows } = await connection.execute(
     `SELECT * FROM Persons WHERE City = ?`,
     [city]
