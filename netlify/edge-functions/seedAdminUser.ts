@@ -1,4 +1,4 @@
-import { Context } from 'https://edge.netlify.com';
+import type { Context } from 'https://edge.netlify.com';
 import { connect } from 'https://unpkg.com/@planetscale/database@^1.3.0';
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
 

@@ -1,12 +1,13 @@
-import axios, {
+import axios from 'axios';
+import type {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
   Method
 } from 'axios';
 
-import { Environment } from '~/config';
-const env = (process.env.NODE_ENV as Environment) ?? 'development';
+// import type { Environment } from '~/config';
+// const env = (process.env.NODE_ENV as Environment) ?? 'development';
 
 const defaultConfig: AxiosRequestConfig = {
   timeout: 10000,
@@ -27,14 +28,12 @@ export const createAxiosInstance = (
     ...configOverride
   });
 
-export const axiosService = async <Body, Response>(
+export const axiosService = async <Response>(
   instance: AxiosInstance,
   url: string,
-  method?: Method,
-  data?: Body
+  options?: AxiosRequestConfig
 ): Promise<AxiosResponse<Response>> =>
   await instance.request({
     url,
-    method: method || 'GET',
-    ...(data && { data })
+    ...options
   });
