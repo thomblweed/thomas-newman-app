@@ -7,10 +7,10 @@
     "build:css": "postcss styles --base styles --dir app/styles --env production",
     "watch": "run-p \"watch:*\"",
     "watch:css": "postcss styles --base styles --dir app/styles -w",
-    "watch:remix": "remix watch",
+    "watch:remix": "cross-env NODE_ENV=development REMIX_ENV=development remix watch",
     "dev": "run-p \"dev:*\"",
     "dev:css": "postcss styles --base styles --dir app/styles -w",
-    "dev:remix": "remix dev --port 2000",
+    "dev:remix": "cross-env NODE_ENV=development REMIX_ENV=development remix dev --port 2000",
     "start": "cross-env NODE_ENV=production netlify dev",
     "clean:build": "if [ -d \"public/build\" ]; then rm -rf \"public/build\"; fi"
   },
