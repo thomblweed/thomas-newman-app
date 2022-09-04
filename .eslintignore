@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+
+api
+.cache
+.env
+.netlify
+server.js
+
+/build/
+/public/build
+
+app/styles
+*.config.*

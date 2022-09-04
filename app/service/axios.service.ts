@@ -1,10 +1,5 @@
 import axios from 'axios';
-import type {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  Method
-} from 'axios';
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 // import type { Environment } from '~/config';
 // const env = (process.env.NODE_ENV as Environment) ?? 'development';

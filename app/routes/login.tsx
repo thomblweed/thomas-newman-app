@@ -26,7 +26,9 @@ export const action: ActionFunction = async ({ request }) => {
         'set-cookie': await commitSession(session)
       }
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
+    // eslint-disable-next-line no-unsafe-optional-chaining
     const { status } = error?.response;
     const errorMessage =
       status === 400 && error.response?.data
@@ -82,8 +84,10 @@ export default function Login() {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
   <div className='flex h-full'>
+    {/* eslint-disable-next-line react/prop-types */}
     <div className='m-auto text-red-600'>{error.message}</div>
   </div>
 );

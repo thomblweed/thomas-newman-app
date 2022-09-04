@@ -8,6 +8,7 @@ const { getSession, commitSession, destroySession } =
       httpOnly: true,
       secure: true,
       isSigned: true,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       secrets: [process.env.SESSION_SECRET!]
     }
   });
