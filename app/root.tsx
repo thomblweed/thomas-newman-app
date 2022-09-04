@@ -1,7 +1,6 @@
 import type {
   ErrorBoundaryComponent,
   LinksFunction,
-  LoaderFunction,
   MetaFunction
 } from '@remix-run/node';
 import {

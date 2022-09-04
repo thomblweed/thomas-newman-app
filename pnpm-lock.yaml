@@ -19,6 +19,8 @@ specifiers:
   cross-env: ^7.0.3
   cssnano: ^5.1.13
   eslint: ^8.23.0
+  eslint-plugin-react: ^7.31.5
+  eslint-plugin-react-hooks: ^4.6.0
   npm-run-all: ^4.1.5
   postcss: ^8.4.16
   postcss-cli: ^10.0.0
@@ -50,6 +52,8 @@ devDependencies:
   autoprefixer: 10.4.8_postcss@8.4.16
   cssnano: 5.1.13_postcss@8.4.16
   eslint: 8.23.0
+  eslint-plugin-react: 7.31.5_eslint@8.23.0
+  eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
   npm-run-all: 4.1.5
   postcss: 8.4.16
   postcss-cli: 10.0.0_postcss@8.4.16
@@ -1633,7 +1637,7 @@ packages:
       eslint-plugin-jest-dom: 4.0.2_eslint@8.23.0
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.23.0
       eslint-plugin-node: 11.1.0_eslint@8.23.0
-      eslint-plugin-react: 7.31.1_eslint@8.23.0
+      eslint-plugin-react: 7.31.5_eslint@8.23.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
       eslint-plugin-testing-library: 5.6.0_yqf6kl63nyoq5megxukfnom5rm
       react: 18.2.0
@@ -3823,8 +3827,8 @@ packages:
       eslint: 8.23.0
     dev: true
 
-  /eslint-plugin-react/7.31.1_eslint@8.23.0:
-    resolution: {integrity: sha512-j4/2xWqt/R7AZzG8CakGHA6Xa/u7iR8Q3xCxY+AUghdT92bnIDOBEefV456OeH0QvBcroVc0eyvrrLSyQGYIfg==}
+  /eslint-plugin-react/7.31.5_eslint@8.23.0:
+    resolution: {integrity: sha512-y7472VAcqns17rsQUk6tQCnqBi+boYjGdYarX022719+wGd1T4U1fOYJ2T2Trd3Od2q5M92e42zJ2uZOGmWamA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
