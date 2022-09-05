@@ -50,10 +50,11 @@ export default function Login() {
   const { state } = useTransition();
   const actionData = useActionData<{ loginError?: string }>();
   return (
-    <div className='flex flex-col h-full'>
+    <div className='flex flex-col'>
       <h2>Admin Login</h2>
       <Form
         method='post'
+        className='m-auto'
         schema={{
           fields: [
             {

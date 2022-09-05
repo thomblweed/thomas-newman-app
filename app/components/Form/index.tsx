@@ -11,6 +11,7 @@ type FormProps = {
   busy: boolean;
   action?: string;
   error?: string;
+  className?: string;
 };
 
 export const Form = ({
@@ -18,10 +19,11 @@ export const Form = ({
   busy = false,
   method,
   action,
-  error
+  error,
+  ...rest
 }: FormProps): JSX.Element => {
   return (
-    <RemixForm method={method} action={action} className='m-auto'>
+    <RemixForm method={method} action={action} {...rest}>
       {schema.fields?.map((field: FormField) => (
         <Field
           key={field.name}
