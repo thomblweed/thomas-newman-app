@@ -1,15 +1,19 @@
+import type { LinksFunction } from '@remix-run/node';
 import { NavLink } from '@remix-run/react';
 
+import headerStyles from './desktop-header.css';
 import { Logo } from '~/components/Logo';
 import { Navigation } from '~/components/Navigation';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: headerStyles }
+];
 
 const DesktopHeader = () => {
   return (
     <header className='flex items-center columns-3 mt-2 mb-5'>
-      <div className='w-2/5 min-w-[260px]'>
+      <div className='header-container'>
         <Logo />
-      </div>
-      <div className='w-3/5'>
         <Navigation
           items={[
             { value: 'Home', route: '/' },

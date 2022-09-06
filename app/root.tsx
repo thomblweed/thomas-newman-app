@@ -17,8 +17,6 @@ import { Main } from '~/layouts/Main';
 import resetStyles from '~/styles/reset.css';
 import fontStyles from '~/styles/font.css';
 import styles from '~/styles/styles.css';
-import { Header } from '~/components/Header';
-import { DeviceProvider } from '~/state/provider/DeviceProvider';
 
 export const links: LinksFunction = () => {
   return [
@@ -30,7 +28,7 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Thomas Newman',
+  title: 'thomblweed',
   viewport: 'width=device-width,initial-scale=1'
 });
 
@@ -52,9 +50,6 @@ const Document = ({ children }: { children: ReactNode }) => (
 export default function Root() {
   return (
     <Document>
-      <DeviceProvider>
-        <Header />
-      </DeviceProvider>
       <Main>
         <Outlet />
       </Main>

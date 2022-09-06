@@ -1,8 +1,8 @@
 import { useContext, Suspense } from 'react';
 
 import { DeviceContext } from '~/state/context/DeviceContext';
-import DesktopHeader from './desktop/DesktopHeader';
-import MobileHeader from './mobile/MobileHeader';
+import DesktopHeader from './Desktop';
+import MobileHeader from './Mobile';
 
 const Placeholder = () => <div className='h-[68px]'></div>;
 
