@@ -3,10 +3,11 @@ import { NavLink } from '@remix-run/react';
 
 import headerStyles from './desktop-header.css';
 import { Logo } from '~/components/Logo';
-import { Navigation } from '~/components/Navigation';
+import { Navigation, links as navigationStyles } from '~/components/Navigation';
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: headerStyles }
+  { rel: 'stylesheet', href: headerStyles },
+  ...navigationStyles()
 ];
 
 const DesktopHeader = () => {

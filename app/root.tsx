@@ -13,18 +13,17 @@ import {
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
 
-import { Main } from '~/layouts/Main';
+import { Main, links as mainLayoutStyles } from '~/layouts/Main';
 import resetStyles from '~/styles/reset.css';
 import fontStyles from '~/styles/font.css';
 import styles from '~/styles/styles.css';
 
-export const links: LinksFunction = () => {
-  return [
-    { rel: 'stylesheet', href: resetStyles },
-    { rel: 'stylesheet', href: styles },
-    { rel: 'stylesheet', href: fontStyles }
-  ];
-};
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: resetStyles },
+  { rel: 'stylesheet', href: styles },
+  { rel: 'stylesheet', href: fontStyles },
+  ...mainLayoutStyles()
+];
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
