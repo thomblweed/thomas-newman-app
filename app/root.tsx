@@ -13,13 +13,16 @@ import {
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
 
-import { HeadingLayout } from '~/layouts/HeaderLayout';
 import { Main } from '~/layouts/Main';
+import resetStyles from '~/styles/reset.css';
 import fontStyles from '~/styles/font.css';
-import styles from '~/styles/global.css';
+import styles from '~/styles/styles.css';
+import { Header } from '~/components/Header';
+import { DeviceProvider } from '~/state/provider/DeviceProvider';
 
 export const links: LinksFunction = () => {
   return [
+    { rel: 'stylesheet', href: resetStyles },
     { rel: 'stylesheet', href: styles },
     { rel: 'stylesheet', href: fontStyles }
   ];
@@ -49,10 +52,11 @@ const Document = ({ children }: { children: ReactNode }) => (
 export default function Root() {
   return (
     <Document>
+      <DeviceProvider>
+        <Header />
+      </DeviceProvider>
       <Main>
-        <HeadingLayout>
-          <Outlet />
-        </HeadingLayout>
+        <Outlet />
       </Main>
     </Document>
   );

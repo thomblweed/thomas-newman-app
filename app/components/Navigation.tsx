@@ -11,7 +11,7 @@ type NavigationProps = {
 };
 
 export const Navigation = ({ items, content }: NavigationProps) => (
-  <nav className=''>
+  <nav role='navigation'>
     <ul className='flex'>
       {items.map(({ value, route }) => (
         <li className='px-2' key={value}>
