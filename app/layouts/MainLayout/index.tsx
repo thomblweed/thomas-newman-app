@@ -13,7 +13,7 @@ export const links: LinksFunction = () => [
   ...footerStyles()
 ];
 
-export const Main = ({ children }: { children: ReactNode }) => (
+export const MainLayout = ({ children }: { children: ReactNode }) => (
   // <div className='bg-gradient-to-b from-dark via-dark-secondary to-dark'>
   <>
     <DeviceProvider>

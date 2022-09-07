@@ -13,7 +13,7 @@ import {
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
 
-import { Main, links as mainLayoutStyles } from '~/layouts/Main';
+import { MainLayout, links as mainLayoutStyles } from '~/layouts/MainLayout';
 import resetStyles from '~/styles/reset.css';
 import fontStyles from '~/styles/font.css';
 import styles from '~/styles/styles.css';
@@ -49,17 +49,17 @@ const Document = ({ children }: { children: ReactNode }) => (
 export default function Root() {
   return (
     <Document>
-      <Main>
+      <MainLayout>
         <Outlet />
-      </Main>
+      </MainLayout>
     </Document>
   );
 }
 
 export const ErrorBoundary: ErrorBoundaryComponent = () => (
   <Document>
-    <Main>
+    <MainLayout>
       <div>Bad things have happened</div>
-    </Main>
+    </MainLayout>
   </Document>
 );
