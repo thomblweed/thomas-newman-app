@@ -45,10 +45,28 @@
 
 body {
   font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+  color: var(--clr-grey);
   background-color: var(--clr-dark);
 }
 
+/* * {
+  outline: 1px solid red;
+} */
+
 /* Utility classes */
+
+.container {
+  --max-width: 2560px;
+  --spacing-size: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--spacing-size) * 2));
+  margin-inline: auto;
+}
+
+.text-primary {
+  color: var(--clr-primary);
+}
 
 .text-alternate {
   color: var(--clr-alternate);

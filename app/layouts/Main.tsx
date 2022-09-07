@@ -17,7 +17,9 @@ export const Main = ({ children }: { children: ReactNode }) => (
     <DeviceProvider>
       <Header />
     </DeviceProvider>
-    <main className='mx-auto w-11/12 max-w-screen-xl h-full'>{children}</main>
+    <main className='container mx-auto w-11/12 max-w-screen-xl h-full'>
+      {children}
+    </main>
     <Footer footerText='thomblweed' />
   </>
 );
