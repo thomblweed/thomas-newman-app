@@ -23,7 +23,7 @@ const DesktopHeader = () => {
           content={({ value, route }) => (
             <NavLink
               className={({ isActive }) =>
-                isActive ? 'underline underline-offset-8' : 'text-alternate'
+                isActive ? 'nav-item --active' : 'nav-item | text-alternate'
               }
               to={route}
             >

@@ -40,6 +40,11 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
+/* default font color for anchor tags */
+a {
+  color: inherit;
+}
+
 /* Make images easier to work with */
 img,
 picture,

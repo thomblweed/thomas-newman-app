@@ -11,8 +11,8 @@ export const links: LinksFunction = () => [
 ];
 
 export const Footer = ({ footerText }: FooterProps) => (
-  <footer className='bg-gradient-to-t from-dark-grey footer container'>
-    <div className='mx-auto w-11/12 max-w-screen-xl'>
+  <footer className='footer | container'>
+    <div>
       <p className='text-alternate'>{footerText}</p>
       <p className='text-small text-secondary'>
         Copyright &copy; {new Date().getFullYear()}

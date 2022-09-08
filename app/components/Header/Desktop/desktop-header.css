@@ -2,3 +2,12 @@
   display: flex;
   align-items: center;
 }
+
+.nav-item {
+  text-decoration: inherit;
+}
+
+.--active {
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+}

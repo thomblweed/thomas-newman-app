@@ -45,7 +45,7 @@
 
 body {
   font-family: var(--ff-primary);
-  font-size: var(--fs-400);
+  font-size: var(--fs-body);
   color: var(--clr-grey);
   background-color: var(--clr-dark);
 
@@ -80,6 +80,10 @@ body {
 
 .text-secondary {
   color: var(--clr-secondary);
+}
+
+.text-large {
+  font-size: var(--fs-primary-heading);
 }
 
 .text-small {
