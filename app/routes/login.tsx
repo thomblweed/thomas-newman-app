@@ -1,8 +1,12 @@
-import type { ActionFunction, ErrorBoundaryComponent } from '@remix-run/node';
+import type {
+  ActionFunction,
+  ErrorBoundaryComponent,
+  LinksFunction
+} from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { useActionData, useTransition } from '@remix-run/react';
 
-import { Form } from '~/components/Form';
+import { Form, links as formStyles } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
 import { commitSession, getSession } from '~/service/session.service';
 import { signinUser } from '~/service/user.service';
@@ -11,6 +15,8 @@ import { getFormValuesFromRequest } from '~/utils';
 
 const EMAIL = 'email';
 const PASSWORD = 'password';
+
+export const links: LinksFunction = () => [...formStyles()];
 
 export const action: ActionFunction = async ({ request }) => {
   const [email, password] = await getFormValuesFromRequest(request, [

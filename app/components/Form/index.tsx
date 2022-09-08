@@ -1,9 +1,12 @@
 import { Form as RemixForm } from '@remix-run/react';
 import type { FormMethod } from '@remix-run/react';
+import type { LinksFunction } from '@remix-run/node';
 
 import type { FormField, FormSchema } from './types';
 import { Field } from './Fields/Field';
-import { Button } from '../Elements/Button';
+import { Button, links as buttonStyles } from '../Elements/Button';
+
+export const links: LinksFunction = () => [...buttonStyles()];
 
 type FormProps = {
   schema: FormSchema;
