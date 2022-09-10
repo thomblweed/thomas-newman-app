@@ -1,0 +1,15 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: var(--spacing-200);
+}
+
+.nav-link {
+  text-decoration: inherit;
+}
+
+.nav-link-active {
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+}

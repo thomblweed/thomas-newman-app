@@ -1,4 +1,4 @@
 .main {
   height: 100%;
-  margin-block: 1rem;
+  margin-block: var(--spacing-300);
 }

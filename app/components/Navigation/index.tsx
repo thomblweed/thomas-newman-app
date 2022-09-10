@@ -21,7 +21,7 @@ export const Navigation = ({ items, content }: NavigationProps) => (
   <nav aria-label='primary'>
     <ul className='navigation-list'>
       {items.map(({ value, route }) => (
-        <li className='px-2' key={value}>
+        <li className='navigation-item' key={value}>
           {content({ value, route })}
         </li>
       ))}
