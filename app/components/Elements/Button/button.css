@@ -1,10 +1,10 @@
 .button {
   cursor: pointer;
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
+  padding-inline: var(--spacing-300);
+  padding-block: var(--spacing-200);
   color: var(--clr-dark);
   background-color: var(--clr-primary);
-  border-radius: 0.5rem;
+  border-radius: var(--spacing-200);
   font-weight: var(--fw-bold);
   font-size: var(--fs-450);
 }
