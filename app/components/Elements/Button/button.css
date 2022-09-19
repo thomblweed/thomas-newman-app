@@ -6,5 +6,29 @@
   background-color: var(--clr-primary);
   border-radius: var(--spacing-200);
   font-weight: var(--fw-bold);
-  font-size: var(--fs-450);
+  font-size: var(--fs-button);
+  transition: background-color var(--transition-duration);
+}
+
+.button-width-full {
+  width: 100%;
+}
+
+.button-width-normal {
+  min-width: 85px;
+}
+
+.button:hover {
+  background-color: var(--clr-alternate);
+}
+
+.button:active {
+  background-color: var(--clr-grey);
+}
+
+.button:disabled {
+  background-color: var(--clr-grey);
+  color: var(--clr-alternate);
+  opacity: 0.6;
+  cursor: not-allowed;
 }

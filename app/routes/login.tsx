@@ -60,7 +60,6 @@ export default function Login() {
       <h2>Admin Login</h2>
       <Form
         method='post'
-        className='m-auto'
         schema={{
           fields: [
             {

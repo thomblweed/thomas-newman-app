@@ -2,11 +2,15 @@ import { Form as RemixForm } from '@remix-run/react';
 import type { FormMethod } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
 
+import formStyles from './form.css';
 import type { FormField, FormSchema } from './types';
 import { Field } from './Fields/Field';
 import { Button, links as buttonStyles } from '../Elements/Button';
 
-export const links: LinksFunction = () => [...buttonStyles()];
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: formStyles },
+  ...buttonStyles()
+];
 
 type FormProps = {
   schema: FormSchema;
@@ -26,7 +30,7 @@ export const Form = ({
   ...rest
 }: FormProps): JSX.Element => {
   return (
-    <RemixForm method={method} action={action} {...rest}>
+    <RemixForm className='form' method={method} action={action} {...rest}>
       {schema.fields?.map((field: FormField) => (
         <Field
           key={field.name}
