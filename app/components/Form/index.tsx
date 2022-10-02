@@ -4,11 +4,12 @@ import type { LinksFunction } from '@remix-run/node';
 
 import formStyles from './form.css';
 import type { FormField, FormSchema } from './types';
-import { Field } from './Fields/Field';
+import { Field, links as fieldStyles } from './Fields/Field';
 import { Button, links as buttonStyles } from '../Elements/Button';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: formStyles },
+  ...fieldStyles(),
   ...buttonStyles()
 ];
 

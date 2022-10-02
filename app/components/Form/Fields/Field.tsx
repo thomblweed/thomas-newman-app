@@ -1,7 +1,10 @@
+import type { LinksFunction } from '@remix-run/node';
 import type { ReactElement } from 'react';
-import { Input } from '~/components/Elements/Input';
 
+import { Input, links as inputStyles } from '~/components/Elements/Input';
 import type { InputType } from '../types';
+
+export const links: LinksFunction = () => [...inputStyles()];
 
 type FieldProps = {
   name: string;
