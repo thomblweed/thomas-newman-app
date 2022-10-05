@@ -7,9 +7,15 @@
   outline-offset: 2px;
   background-color: inherit;
   padding: var(--spacing-300);
-  height: 3rem;
+  height: 2.75rem;
   transition: box-shadow var(--transition-duration),
     border-color var(--transition-duration);
+}
+
+@media (min-width: 50em) {
+  .input {
+    height: 3rem;
+  }
 }
 
 .input:hover:enabled {
