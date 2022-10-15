@@ -3,12 +3,14 @@
   padding-inline: var(--spacing-300);
   padding-block: var(--spacing-200);
   color: var(--clr-dark);
+  border: none;
   background-color: var(--clr-primary);
   border-radius: var(--spacing-200);
   font-weight: var(--fw-bold);
   font-size: var(--fs-button);
   height: 3rem;
-  transition: background-color var(--transition-duration);
+  transition: background-color var(--transition-duration),
+    box-shadow var(--transition-duration);
 }
 
 .button-width-full {
@@ -19,12 +21,20 @@
   min-width: 85px;
 }
 
-.button:hover {
-  background-color: var(--clr-alternate);
+.button:hover:enabled {
+  background-color: var(--clr-grey);
+  box-shadow: 0 0 3px 2.5px var(--clr-primary);
 }
 
-.button:active {
-  background-color: var(--clr-grey);
+.button:focus:enabled {
+  /* outline: var(--clr-grey) solid 1px;
+  outline-offset: 4px; */
+  /* box-shadow: 0 0 3px 1.5px var(--clr-primary); */
+  /* border-color: var(--clr-grey); */
+}
+
+.button:active:enabled {
+  background-color: var(--clr-alternate);
 }
 
 .button:disabled {
