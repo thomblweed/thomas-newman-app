@@ -18,14 +18,10 @@
   }
 }
 
-.input:hover:enabled {
-  border-color: var(--clr-grey);
-  box-shadow: 0 0 3px 1.5px var(--clr-primary);
-}
-
+.input:hover:enabled,
 .input:focus:enabled {
   border-color: var(--clr-grey);
-  box-shadow: 0 0 3px 1.5px var(--clr-primary);
+  box-shadow: 0 0 8px 1px var(--clr-primary);
 }
 
 .input:disabled {
