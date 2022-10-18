@@ -1,9 +1,15 @@
 import type { LinksFunction } from '@remix-run/node';
 
 import { Input, links as inputStyles } from '~/components/Elements/Input';
+import { Label, links as labelStyles } from '~/components/Elements/Label';
 import type { InputType } from '../types';
+import fieldStyles from './field.css';
 
-export const links: LinksFunction = () => [...inputStyles()];
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: fieldStyles },
+  ...labelStyles(),
+  ...inputStyles()
+];
 
 type FieldProps = {
   name: string;
@@ -20,10 +26,8 @@ export const Field = ({
   disabled,
   required
 }: FieldProps) => (
-  <div className='mb-4' id={name} role='group'>
-    <label className='inline-block mb-2 text-secondary' htmlFor={name}>
-      {label}
-    </label>
+  <div className='field' id={name} role='group'>
+    <Label text={label} htmlFor={name} />
     <Input
       aria-label={`${label}`}
       type={type}

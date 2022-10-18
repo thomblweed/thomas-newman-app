@@ -4,7 +4,7 @@ import type { LinksFunction } from '@remix-run/node';
 
 import formStyles from './form.css';
 import type { FormField, FormSchema } from './types';
-import { Field, links as fieldStyles } from './Fields/Field';
+import { Field, links as fieldStyles } from './Field';
 import { Button, links as buttonStyles } from '../Elements/Button';
 
 export const links: LinksFunction = () => [

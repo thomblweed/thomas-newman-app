@@ -26,7 +26,7 @@
 
 .input:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.3;
   background-color: var(--clr-grey);
   color: var(--clr-alternate);
 }
