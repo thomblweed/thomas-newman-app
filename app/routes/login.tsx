@@ -6,6 +6,7 @@ import type {
 import { json, redirect } from '@remix-run/node';
 import { useActionData, useTransition } from '@remix-run/react';
 
+import { Section, links as sectionStyles } from '~/components/Section';
 import { Form, links as formStyles } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
 import { commitSession, getSession } from '~/service/session.service';
@@ -16,7 +17,7 @@ import { getFormValuesFromRequest } from '~/utils';
 const EMAIL = 'email';
 const PASSWORD = 'password';
 
-export const links: LinksFunction = () => [...formStyles()];
+export const links: LinksFunction = () => [...sectionStyles(), ...formStyles()];
 
 export const action: ActionFunction = async ({ request }) => {
   const [email, password] = await getFormValuesFromRequest(request, [
@@ -56,7 +57,7 @@ export default function Login() {
   const { state } = useTransition();
   const actionData = useActionData<{ loginError?: string }>();
   return (
-    <section className='flex flex-col'>
+    <Section>
       <h2>Admin Login</h2>
       <Form
         method='post'
@@ -86,7 +87,7 @@ export default function Login() {
         busy={state === 'submitting' || state === 'loading'}
         error={actionData?.loginError}
       />
-    </section>
+    </Section>
   );
 }
 
