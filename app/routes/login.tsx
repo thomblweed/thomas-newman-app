@@ -13,11 +13,16 @@ import { commitSession, getSession } from '~/service/session.service';
 import { signinUser } from '~/service/user.service';
 import type { Credentials } from '~/types';
 import { getFormValuesFromRequest } from '~/utils';
+import loginStyles from '~/styles/routes/login.css';
 
 const EMAIL = 'email';
 const PASSWORD = 'password';
 
-export const links: LinksFunction = () => [...sectionStyles(), ...formStyles()];
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: loginStyles },
+  ...sectionStyles(),
+  ...formStyles()
+];
 
 export const action: ActionFunction = async ({ request }) => {
   const [email, password] = await getFormValuesFromRequest(request, [
@@ -59,34 +64,36 @@ export default function Login() {
   return (
     <Section>
       <h2>Admin Login</h2>
-      <Form
-        method='post'
-        schema={{
-          fields: [
-            {
-              type: FieldType.EMAIL,
-              name: EMAIL,
-              label: 'Email Address',
-              required: true
-            },
-            {
-              type: FieldType.PASSWORD,
-              name: PASSWORD,
-              label: 'Password',
-              required: true
-            }
-          ],
-          buttons: [
-            {
-              label: 'Login',
-              type: ButtonType.SUBMIT,
-              id: 'login-button'
-            }
-          ]
-        }}
-        busy={state === 'submitting' || state === 'loading'}
-        error={actionData?.loginError}
-      />
+      <div className='formContainer'>
+        <Form
+          method='post'
+          schema={{
+            fields: [
+              {
+                type: FieldType.EMAIL,
+                name: EMAIL,
+                label: 'Email Address',
+                required: true
+              },
+              {
+                type: FieldType.PASSWORD,
+                name: PASSWORD,
+                label: 'Password',
+                required: true
+              }
+            ],
+            buttons: [
+              {
+                label: 'Login',
+                type: ButtonType.SUBMIT,
+                id: 'login-button'
+              }
+            ]
+          }}
+          busy={state === 'submitting' || state === 'loading'}
+          error={actionData?.loginError}
+        />
+      </div>
     </Section>
   );
 }
