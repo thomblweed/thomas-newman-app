@@ -12,7 +12,7 @@ export const links: LinksFunction = () => [
 
 const DesktopHeader = () => {
   return (
-    <header className='container flex items-center columns-3 mt-2 mb-5'>
+    <header className='container'>
       <div className='header-container'>
         <Logo />
         <Navigation

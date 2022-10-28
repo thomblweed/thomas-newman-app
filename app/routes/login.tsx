@@ -100,8 +100,8 @@ export default function Login() {
 
 // eslint-disable-next-line react/prop-types
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
-  <div className='flex h-full'>
+  <div>
     {/* eslint-disable-next-line react/prop-types */}
-    <div className='m-auto text-red-600'>{error.message}</div>
+    <div>{error.message}</div>
   </div>
 );

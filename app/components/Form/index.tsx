@@ -1,3 +1,4 @@
+import type { RefAttributes } from 'react';
 import { Form as RemixForm } from '@remix-run/react';
 import type { FormMethod } from '@remix-run/react';
 import type { LinksFunction } from '@remix-run/node';
@@ -14,6 +15,7 @@ type FormProps = {
   busy: boolean;
   action?: string;
   error?: string;
+  className?: string;
 };
 
 export const Form = ({
@@ -23,7 +25,7 @@ export const Form = ({
   action,
   error,
   ...rest
-}: FormProps) => (
+}: FormProps & RefAttributes<HTMLFormElement>) => (
   <RemixForm method={method} action={action} {...rest}>
     {schema.fields?.map((field: FormField) => (
       <Field
@@ -35,9 +37,9 @@ export const Form = ({
         required={field.required}
       />
     ))}
-    {schema.buttons?.map((button) => (
-      <Button key={button.id} disabled={busy} type={button.type} width='full'>
-        {button.label}
+    {schema.buttons?.map(({ id, type, label }) => (
+      <Button key={id} disabled={busy} type={type} width='full'>
+        {label}
       </Button>
     ))}
     {error ? <p>{error}</p> : null}

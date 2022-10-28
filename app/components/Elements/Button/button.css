@@ -10,6 +10,7 @@
   font-size: var(--fs-button);
   height: 3rem;
   transition: all var(--transition-duration);
+  margin-block: var(--spacing-300);
 }
 
 .button:hover:enabled,
