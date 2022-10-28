@@ -1,16 +1,28 @@
-import type { ActionFunction, ErrorBoundaryComponent } from '@remix-run/node';
+import type {
+  ActionFunction,
+  ErrorBoundaryComponent,
+  LinksFunction
+} from '@remix-run/node';
 import { json, redirect } from '@remix-run/node';
 import { useActionData, useTransition } from '@remix-run/react';
 
-import { Form } from '~/components/Form';
+import { Section, links as sectionStyles } from '~/components/Section';
+import { Form, links as formStyles } from '~/components/Form';
 import { ButtonType, FieldType } from '~/components/Form/enums';
 import { commitSession, getSession } from '~/service/session.service';
 import { signinUser } from '~/service/user.service';
 import type { Credentials } from '~/types';
 import { getFormValuesFromRequest } from '~/utils';
+import loginStyles from '~/styles/routes/login.css';
 
 const EMAIL = 'email';
 const PASSWORD = 'password';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: loginStyles },
+  ...sectionStyles(),
+  ...formStyles()
+];
 
 export const action: ActionFunction = async ({ request }) => {
   const [email, password] = await getFormValuesFromRequest(request, [
@@ -50,44 +62,46 @@ export default function Login() {
   const { state } = useTransition();
   const actionData = useActionData<{ loginError?: string }>();
   return (
-    <div className='flex flex-col h-full'>
+    <Section>
       <h2>Admin Login</h2>
-      <Form
-        method='post'
-        schema={{
-          fields: [
-            {
-              type: FieldType.EMAIL,
-              name: EMAIL,
-              label: 'Email Address',
-              required: true
-            },
-            {
-              type: FieldType.PASSWORD,
-              name: PASSWORD,
-              label: 'Password',
-              required: true
-            }
-          ],
-          buttons: [
-            {
-              label: 'Login',
-              type: ButtonType.SUBMIT,
-              id: 'login-button'
-            }
-          ]
-        }}
-        busy={state === 'submitting' || state === 'loading'}
-        error={actionData?.loginError}
-      />
-    </div>
+      <div className='formContainer'>
+        <Form
+          method='post'
+          schema={{
+            fields: [
+              {
+                type: FieldType.EMAIL,
+                name: EMAIL,
+                label: 'Email Address',
+                required: true
+              },
+              {
+                type: FieldType.PASSWORD,
+                name: PASSWORD,
+                label: 'Password',
+                required: true
+              }
+            ],
+            buttons: [
+              {
+                label: 'Login',
+                type: ButtonType.SUBMIT,
+                id: 'login-button'
+              }
+            ]
+          }}
+          busy={state === 'submitting' || state === 'loading'}
+          error={actionData?.loginError}
+        />
+      </div>
+    </Section>
   );
 }
 
 // eslint-disable-next-line react/prop-types
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => (
-  <div className='flex h-full'>
+  <div>
     {/* eslint-disable-next-line react/prop-types */}
-    <div className='m-auto text-red-600'>{error.message}</div>
+    <div>{error.message}</div>
   </div>
 );

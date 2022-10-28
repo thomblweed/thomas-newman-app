@@ -13,21 +13,21 @@ import {
 } from '@remix-run/react';
 import type { ReactNode } from 'react';
 
-import { HeadingLayout } from '~/layouts/HeaderLayout';
-import { Main } from '~/layouts/Main';
+import { MainLayout, links as mainLayoutStyles } from '~/layouts/MainLayout';
+import resetStyles from '~/styles/reset.css';
 import fontStyles from '~/styles/font.css';
-import styles from '~/styles/global.css';
+import styles from '~/styles/styles.css';
 
-export const links: LinksFunction = () => {
-  return [
-    { rel: 'stylesheet', href: styles },
-    { rel: 'stylesheet', href: fontStyles }
-  ];
-};
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: resetStyles },
+  { rel: 'stylesheet', href: styles },
+  { rel: 'stylesheet', href: fontStyles },
+  ...mainLayoutStyles()
+];
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Thomas Newman',
+  title: 'thomblweed',
   viewport: 'width=device-width,initial-scale=1'
 });
 
@@ -49,19 +49,17 @@ const Document = ({ children }: { children: ReactNode }) => (
 export default function Root() {
   return (
     <Document>
-      <Main>
-        <HeadingLayout>
-          <Outlet />
-        </HeadingLayout>
-      </Main>
+      <MainLayout>
+        <Outlet />
+      </MainLayout>
     </Document>
   );
 }
 
 export const ErrorBoundary: ErrorBoundaryComponent = () => (
   <Document>
-    <Main>
+    <MainLayout>
       <div>Bad things have happened</div>
-    </Main>
+    </MainLayout>
   </Document>
 );

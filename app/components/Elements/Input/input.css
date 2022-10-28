@@ -1,0 +1,40 @@
+.input {
+  width: 100%;
+  color: var(--clr-grey);
+  border-radius: var(--spacing-200);
+  border: 1px solid var(--clr-primary);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  background-color: inherit;
+  padding: var(--spacing-300);
+  height: 2.75rem;
+  transition: box-shadow var(--transition-duration),
+    border-color var(--transition-duration);
+}
+
+@media (min-width: 50em) {
+  .input {
+    height: 3rem;
+  }
+}
+
+.input:hover:enabled,
+.input:focus:enabled {
+  border-color: var(--clr-grey);
+  box-shadow: 0 0 8px 1px var(--clr-primary);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+  background-color: var(--clr-grey);
+  color: var(--clr-alternate);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
+}

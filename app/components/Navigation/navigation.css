@@ -1,0 +1,8 @@
+.navigation-list {
+  display: flex;
+  margin-inline: var(--spacing-200);
+}
+
+.navigation-item {
+  padding-inline: var(--spacing-200);
+}

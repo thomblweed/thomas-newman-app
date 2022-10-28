@@ -1,9 +1,13 @@
+import type { RefAttributes } from 'react';
 import { Form as RemixForm } from '@remix-run/react';
 import type { FormMethod } from '@remix-run/react';
+import type { LinksFunction } from '@remix-run/node';
 
 import type { FormField, FormSchema } from './types';
-import { Field } from './Fields/Field';
-import { Button } from '../Elements/Button';
+import { Field, links as fieldStyles } from './Field';
+import { Button, links as buttonStyles } from '../Elements/Button';
+
+export const links: LinksFunction = () => [...fieldStyles(), ...buttonStyles()];
 
 type FormProps = {
   schema: FormSchema;
@@ -11,6 +15,7 @@ type FormProps = {
   busy: boolean;
   action?: string;
   error?: string;
+  className?: string;
 };
 
 export const Form = ({
@@ -18,26 +23,25 @@ export const Form = ({
   busy = false,
   method,
   action,
-  error
-}: FormProps): JSX.Element => {
-  return (
-    <RemixForm method={method} action={action} className='m-auto'>
-      {schema.fields?.map((field: FormField) => (
-        <Field
-          key={field.name}
-          name={field.name}
-          label={field.label}
-          type={field.type}
-          disabled={busy}
-          required={field.required}
-        />
-      ))}
-      {schema.buttons?.map((button) => (
-        <Button key={button.id} disabled={busy} type={button.type} width='full'>
-          {button.label}
-        </Button>
-      ))}
-      {error ? <p className='text-red-600'>{error}</p> : null}
-    </RemixForm>
-  );
-};
+  error,
+  ...rest
+}: FormProps & RefAttributes<HTMLFormElement>) => (
+  <RemixForm method={method} action={action} {...rest}>
+    {schema.fields?.map((field: FormField) => (
+      <Field
+        key={field.name}
+        name={field.name}
+        label={field.label}
+        type={field.type}
+        disabled={busy}
+        required={field.required}
+      />
+    ))}
+    {schema.buttons?.map(({ id, type, label }) => (
+      <Button key={id} disabled={busy} type={type} width='full'>
+        {label}
+      </Button>
+    ))}
+    {error ? <p>{error}</p> : null}
+  </RemixForm>
+);
