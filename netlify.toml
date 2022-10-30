@@ -13,10 +13,10 @@
   NODE_ENV = "development"
   REMIX_ENV = "development"
 
-[[redirects]]
-  from = "/api/users/login"
-  to = "/.netlify/functions/login"
-  status = 200
+# [[redirects]]
+#   from = "/api/users/login"
+#   to = "/.netlify/functions/login"
+#   status = 200
 
 [[redirects]]
   from = "/*"
@@ -37,6 +37,6 @@
 #   function = "seedAdminUser"
 
 ### disabling until edge functions support the deno unstable flag on production
-# [[edge_functions]]
-#   path = "/api/users/login"
-#   function = "login"
+[[edge_functions]]
+  path = "/api/users/login"
+  function = "login"

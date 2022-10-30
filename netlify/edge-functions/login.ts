@@ -1,5 +1,5 @@
 import * as bcrypt from 'https://deno.land/x/bcrypt@v0.4.0/mod.ts';
-import { connect } from 'https://unpkg.com/@planetscale/database@^1.3.0';
+import { connect } from 'https://unpkg.com/@planetscale/database@1.4.0/dist/index.js';
 
 const getPlanetScaleConnection = () =>
   connect({
@@ -34,13 +34,15 @@ export default async (request: Request) => {
   const connection = getPlanetScaleConnection();
   const { rows } = await connection.execute(
     'SELECT * FROM credentials WHERE email = ?',
-    [email]
+    // dumb fix for wrong types
+    [email] as unknown as null
   );
   if (rows?.length !== 1) {
     return badRequest(`User with email "${email}" does not exist`);
   }
 
-  const passwordsMatch = await compare(rows[0].password, password);
+  const [firstRow] = rows;
+  const passwordsMatch = await compare(firstRow.password, password);
   if (!passwordsMatch) {
     return badRequest('Invalid password provided');
   }
