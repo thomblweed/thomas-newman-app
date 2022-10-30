@@ -40,10 +40,8 @@ export const action: ActionFunction = async ({ request }) => {
     });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    // eslint-disable-next-line no-unsafe-optional-chaining
-    const { status } = error?.response;
     const errorMessage =
-      status === 400 && error.response?.data
+      error?.response?.status === 400 && error.response?.data
         ? error.response.data
         : 'An error occured when logging in';
     session.flash('error', errorMessage);

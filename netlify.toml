@@ -37,6 +37,10 @@
 #   function = "seedAdminUser"
 
 ### disabling until edge functions support the deno unstable flag on production
+# [[edge_functions]]
+#   path = "/api/users/login"
+#   function = "loginPlanetscale"
+
 [[edge_functions]]
   path = "/api/users/login"
-  function = "login"
+  function = "loginSupabase"

@@ -22,7 +22,6 @@ const toHash = async (password: string): Promise<string> => {
   return hashedPassword;
 };
 
-// function disabled for now
 export default async (request: Request, _context: Context) => {
   if (request.method !== 'POST') {
     return new Response(
